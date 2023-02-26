@@ -2,7 +2,7 @@
 Goal of project: Prediction of Bitcoin Price
 1. Import Api for Bitcoin (Done)
 2. Get the current Price of Bitcoin (Done)
-3. Predict the Day bitcoin price (Done)
+3. Predict the next Day bitcoin price (Done)
 
 Tools that may be needed
 1. Requests
