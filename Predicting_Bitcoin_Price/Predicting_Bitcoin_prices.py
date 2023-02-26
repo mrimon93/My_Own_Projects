@@ -28,7 +28,7 @@ respons = requests.get(bitcoin_url)
 def responsa_url():
     data = json.loads(respons.text) #Converts JSON string to dictionary.
     price = data['bpi']['USD']['rate'] #Extracts rate value of USD currency from bpi dictionary ny Elements/List
-    print(price + ' USD')
+    print('The price of bitcoin is ', price + ' USD')
 
 def asking_the_user():
     asking = input('Do you want to predict the Bitcoin Price?  (Yes/No) ').lower()
