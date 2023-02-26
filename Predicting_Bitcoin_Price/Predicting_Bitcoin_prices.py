@@ -2,21 +2,22 @@
 Goal of project: Prediction of Bitcoin Price
 1. Import Api for Bitcoin (Done)
 2. Get the current Price of Bitcoin (Done)
-3. Predict the next month bitcoin price
-4. And make a plot
+3. Predict the Day bitcoin price (Done)
 
 Tools that may be needed
 1. Requests
 2. Pandas
 3. Sclearn
-4. Matplotlib
+5. Arima
 '''
 import pandas as pd
 import numpy as np
 import requests
 import requests
 import json
-from datetime import datetime
+import datetime
+from statsmodels.tsa.arima.model import ARIMA # New one for myself [26 Feb 2023]
+
 
 #Api for BitCoin Price from Coindesk.com
 bitcoin_url = 'https://api.coindesk.com/v1/bpi/currentprice.json'
@@ -33,8 +34,23 @@ def asking_the_user():
     asking = input('Do you want to predict the Bitcoin Price?  (Yes/No) ').lower()
     return asking
 
+# Predicting the file with ARIMA MODEL
 def predicting_the_bitcoin_price():
-    # Predict and print out a vizulation
+    #Loading the Bitcoin data
+    today = datetime.date.today()
+    predict_bitcoin_url = f'https://api.coindesk.com/v1/bpi/historical/close.json?start=2022-01-01&end={today}'
+    response = requests.get(predict_bitcoin_url)
+    data = response.json()
+    df = pd.DataFrame.from_dict(data['bpi'],orient='index', columns=['price'])
+    return df
+
+def Arima_Model():
+    model =ARIMA(predicting_the_bitcoin_price(), order=(2,1,0))# ARIMA(p,d,q) with p=2, d=1, q=0
+    model_fit = model.fit()
+    # make predictions for next day
+    next_day = pd.date_range(start='2022-03-01', end='2022-03-01', freq='D')
+    forecast = model_fit.forecast(steps=1)
+    print('The Predicted Price of BitCoin is: ' ,forecast)
 
 
 #Showing the Bitcoin price after a successful Connection
@@ -45,8 +61,13 @@ else:
 
 answer = asking_the_user()
 
-if answer == 'yes'
+if answer == 'yes':
+    Arima_Model()
+else:
+    print('Yep You Suck')
 
+
+print('That is the end of the code')
 
 
 
@@ -55,12 +76,9 @@ if answer == 'yes'
 Current Progress: 
 Figure out how to show it nicely with price and date the code was runned 
 
-
 Added to the Project
 1. Add Date Time 
 2. Use Statsmodel to predict the next day BitCoin Price
-
-
-
+3.
 
 '''
