@@ -2,7 +2,7 @@
 Goal of project: Prediction of Bitcoin Price
 1. Import Api for Bitcoin (Done)
 2. Get the current Price of Bitcoin (Done)
-3. Predict the next Day bitcoin price (Done)
+3. Predict the Day bitcoin price (Done)
 
 Tools that may be needed
 1. Requests
@@ -28,7 +28,7 @@ respons = requests.get(bitcoin_url)
 def responsa_url():
     data = json.loads(respons.text) #Converts JSON string to dictionary.
     price = data['bpi']['USD']['rate'] #Extracts rate value of USD currency from bpi dictionary ny Elements/List
-    print('The Bitcoin Price is: ', price + ' USD')
+    print(price + ' USD')
 
 def asking_the_user():
     asking = input('Do you want to predict the Bitcoin Price?  (Yes/No) ').lower()
@@ -48,9 +48,11 @@ def Arima_Model():
     model =ARIMA(predicting_the_bitcoin_price(), order=(2,1,0))# ARIMA(p,d,q) with p=2, d=1, q=0
     model_fit = model.fit()
     # make predictions for next day
-    next_day = pd.date_range(start='2022-03-01', end='2022-03-01', freq='D')
+    today =  datetime.date.today()
+    next_day = today + datetime.timedelta(days=1)
+    next_day_prediction = pd.date_range(start= next_day, end= next_day, freq='D')
     forecast = model_fit.forecast(steps=1)
-    print('The Predicted Price of BitCoin is: ' ,forecast)
+    print(forecast)
 
 
 #Showing the Bitcoin price after a successful Connection
@@ -81,4 +83,27 @@ Added to the Project
 2. Use Statsmodel to predict the next day BitCoin Price
 3.
 
+
+
+
+
+
+
 '''
+
+'''
+Additional Code
+import datetime
+
+# get current date
+current_date = datetime.date.today()
+
+# add one day to current date
+
+
+# print the next day
+print(next_day.strftime("%Y-%m-%d"))
+
+
+'''
+
