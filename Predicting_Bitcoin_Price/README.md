@@ -11,5 +11,5 @@ Also some warning messages which i must look in to.
 
 Either way the codes works, but i need to debug the code.
 
- Reminder: Just checked, i may need (Numpy) to clean the printed statement, ( Note to myself: Check Chatgpt, Stackoverflow or similar project)
+Reminder; Just checked, i may need (Numpy) to clean the printed statement, ( Note to myself: Check Chatgpt, Stackoverflow or similar project)
 ----
