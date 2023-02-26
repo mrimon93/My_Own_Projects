@@ -28,7 +28,7 @@ respons = requests.get(bitcoin_url)
 def responsa_url():
     data = json.loads(respons.text) #Converts JSON string to dictionary.
     price = data['bpi']['USD']['rate'] #Extracts rate value of USD currency from bpi dictionary ny Elements/List
-    print('The price of bitcoin is ', price + ' USD')
+    print('The price of bitcoin is ' + price + ' USD')
 
 def asking_the_user():
     asking = input('Do you want to predict the Bitcoin Price?  (Yes/No) ').lower()
@@ -52,7 +52,7 @@ def Arima_Model():
     next_day = today + datetime.timedelta(days=1)
     next_day_prediction = pd.date_range(start= next_day, end= next_day, freq='D')
     forecast = model_fit.forecast(steps=1)
-    print(forecast)
+    print('The predicted Price of Bitcoin is ' + forecast +' USD' )
 
 
 #Showing the Bitcoin price after a successful Connection
