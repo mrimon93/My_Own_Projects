@@ -1,6 +1,6 @@
 ''' Goal: Update how many job you have applied for every week and every month
 1. Update with Week and Month (Done)
-2. Asking the User how many applicants
+2. Asking the User how many applicants and print out a list (Done)
 3. Ask them to write down the information (optional)
 4. Print out the total (Example if you have applied 10 job every week for 2 Month you should get 80 application)
 5. Get A grisp about how many percent you should have to get a job ( how is the ratio of getting a job)
@@ -14,7 +14,7 @@ from datetime import date
 
 
 today = date.today()
-print('Today is', today)
+print('Today is', today,'\n')
 
 def calculate_weeks_in_month(year,month,day):
     #Define range for valid numbers in day and month
@@ -37,13 +37,30 @@ def calculate_weeks_in_month(year,month,day):
     return num_weeks
 
 def asking_the_user_application():
-    pass
+    #Ask the list of the jobbapplication
+    num_items =int(input('How many job have you applied for this week'))
+
+    #Crete an empty list
+
+    item_list = []
+
+    for i in range(num_items):
+        item = input('Enter items {} '.format(i+1))
+        item_list.append(item)
+    return item_list
+
+
+
 
 def percent_ratio():
     print('Here you should get a ratio of your chance getting a job \n')
 
     pass
 
+
+def make_into_csv_Excel
+    
+    pass
 
 
 #Ask the user for year, month  and date
@@ -54,7 +71,11 @@ day = int(input('Enter the date (1-31) : '))
 
 calculate_weeks_in_month(year, month, day)
 
+print('calling the item list')
 
+items = asking_the_user_application()
+
+print('Your list is ', items)
 
 
 
