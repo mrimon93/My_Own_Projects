@@ -13,3 +13,5 @@ Current Project That i am working on
 4. Extra Salary Calculator
 
 -------------------------------------------------------------------
+Format: 
+1. Coding for Lazy People (In Progress) --- Goal: Getting data by API (Url and Enpoint) 
